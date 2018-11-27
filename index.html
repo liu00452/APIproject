@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommendations</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+    <main>
+        <header class="firstpage first">
+            <h1>Movie Recommendations</h1>
+            
+            <img class="image2 hide" src="img/retro-television-icon_1063-31.jpg" />
+            
+            <img class="image3" src="img/Movie.png" />
+            
+            
+            <div class="inputs">
+
+                <div class="backButtonDiv">
+                    <img id="back-button" alt="Back Button" title="Back" data-src="img/action.svg" class="iconic iconic-md" />
+                </div>
+
+                <input type="text" id="search-input" placeholder="search" style="font-size: 200%" />
+
+                <div class="searchButtonDiv">
+                    <img id="search-button" alt="Search" title="Search" data-src="img/magnifying-glass.svg" class="iconic iconic-md" />
+                </div>
+                <div class="modeButtonDiv">
+                    <img id="mode-button" alt="Mode Button" title="Mode" data-src="img/align.svg" class="iconic iconic-md" />
+                </div>
+            </div>
+           
+             <img class="image1" src="img/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png" />
+           
+        </header>
+
+        <div class="page" id="search-results">
+            <section class="title"></section>
+            <section class="content flex-container"></section>
+        </div>
+
+        <div class="page" id="recommend-results">
+            <section class="title"></section>
+            <section class="content flex-container"></section>
+        </div>
+    </main>
+
+
+    <div class="overlay hide ">&nbsp;</div>
+    <div class="modal off">
+
+        <div class="modal-header">
+            <h2>Preference</h2>
+        </div>
+        <div class="modal-radio">
+            <input type="radio" name="preference" value="tv" id="TV " class="tv" />
+            <label for="TV">TV</label>
+
+            <input type="radio" name="preference" value="movie" id="Movie" checked />
+            <label for="Movie">Movie</label>
+        </div>
+        <button class="cancel-btn">Cancel</button>
+        <button class="save-btn">Save</button>
+
+    </div>
+
+
+    <div class="attribution"></div>
+
+    <script src="js/iconic.min.js"></script>
+    <script src="js/key.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

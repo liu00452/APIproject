@@ -1,0 +1,272 @@
+@import url('https://fonts.google.com/specimen/Robotos');
+
+@import url('https://fonts.google.com/specimen/Cormorant+Upright');
+
+body {
+    background-color:azure;
+    font-family: Robotos, Arial, sans-serif;
+}
+
+.title {
+    font-family: Cormorant Upright, Arvo, serif;
+}
+
+h1 {
+
+    color: #e6ccff;
+    text-shadow: 0.2em 0.1em 0.9em black;
+    font-size: 4rem;
+    font-family: Cormorant Upright, Arvo, serif;
+    text-align: center;
+    padding: 16rem 0 3rem;
+}
+
+.first img {
+    width: 20%;
+    align-self: center;
+    margin: 4rem;
+}
+
+
+
+.first .inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.first {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+
+.first input {
+    width: 50%;
+    height: 50px;
+    border: 3px solid #bf80ff;
+    cursor: pointer;
+    box-shadow:0px 7px 9px; 
+}
+
+#search-input:hover {
+    border: 4px solid #8000ff;
+    width: 70%;
+    height: 60px;
+    transition: all 1s ease-in;
+}
+
+.overlay {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsla(0, 0%, 0%, 0.8);
+    cursor: pointer;
+}
+
+.off {
+    transform: translateY(-200%);
+}
+
+.modal {
+    font-size: 2rem;
+    position: fixed;
+    z-index: 200;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    max-height: 400px;
+    max-width: 800px;
+    bottom: 20%;
+    background-color: #e4e4e4;
+    transition: transform 1s;
+}
+
+.modal-radio {
+    background-color: azure;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    border: 0.5rem solid mediumpurple;
+}
+
+.modal-radio:hover {
+    height: 6rem;
+    font-size: 4rem;
+    transition: all 0.5s ease-in;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.on {
+    transform: translateY(0);
+}
+
+.cancel-btn,
+.save-btn {
+    width: 150px;
+    position: absolute;
+    border: none;
+    background-color: mediumpurple;
+    color: white;
+    cursor: pointer;
+    padding: 0.25rem 2rem;
+    font-size: 2rem;
+}
+
+.save-btn {
+    bottom: 1rem;
+    right: 4rem;
+}
+
+.cancel-btn {
+    bottom: 1rem;
+    left: 4rem;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: mediumpurple;
+    color: white;
+    text-align: center;
+}
+
+.modal-radio {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.movieCard {
+    width: 90%;
+    height: auto;
+    margin: 1rem auto;
+    background-color: #d9b3ff;
+    color: azure;
+    font-weight: bolder;
+    font-size: 2rem;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1.5fr 1.5fr;
+    border-radius: 90%/20%;
+    padding: 1rem;
+    border: 1rem solid teal;
+    box-shadow: 10px 10px 10px purple;
+}
+
+p3 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    margin-top: 8rem;
+    font-size: 60px;
+    text-shadow: 0.1em 0.1em 0.1em teal;
+}
+
+p1 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin-top: 40px;
+    color: black;
+    font-size: 3rem;
+    text-shadow: 0.4em 0.1em 0.5em white;
+}
+
+p2 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin-top: 40px;
+    color: black;
+    font-size: 3rem;
+    text-shadow: 0.5em 0.1em 0.8em white;
+}
+
+p4 {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    font-size: 2.5rem;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.imageSection {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+
+}
+
+.imageSection > img {
+    height: 70%;
+    width: 80%;
+    border: 5px solid white;
+    border-style: dashed;
+}
+
+.change {
+
+    width: 100%;
+    height: 150px;
+    background-color: #d9b3ff;
+    font-weight: bolder;
+    transition: all 0.5s ease-in;
+}
+
+.change {
+    transition: all 1s ease-in;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "a b"
+}
+
+.change h1 {
+    margin: 1rem;
+    grid-area: a;
+    color: white;
+    font-size: 3rem;
+    text-align: left;
+    text-indent: 100px;
+    padding-top: 0px;
+    text-shadow: 0.5em 0.1em 0.5em black;
+    transition: all 0.5s ease-in;
+     font-family: Cormorant Upright, Arvo, serif;
+}
+
+.change input{
+    width:60%;
+     box-shadow:7px 7px 10px; 
+    border: 5px solid teal;
+}
+
+.change .inputs {
+    grid-area: b;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -3rem;
+    transition: all 0.5s ease-in;
+}
+
+
+.backButtonDiv {
+    cursor: pointer;
+}
