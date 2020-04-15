@@ -26,10 +26,13 @@ let myCode = (function () {
                 startSearch();
             }
         });
-        document.querySelector(".searchButtonDiv").addEventListener("click", startSearch);
+        document.querySelector("#search-button").addEventListener("click", startSearch);
         document.querySelector(".modeButtonDiv").addEventListener("click", showOverly);
 
         document.querySelector(".cancel-btn").addEventListener("click", hideOverly);
+
+        document.querySelector(".backButtonDiv").addEventListener("click",backbtn);
+
 
         document.querySelector(".save-btn").addEventListener("click", function (e) {
             let List = document.getElementsByName("preference");
@@ -42,16 +45,19 @@ let myCode = (function () {
             }
 
             if (Type == "tv") {
-                document.querySelector("header h1").textContent = `TV Recommendations`;
-                document.querySelector(".image3").classList.add("hide");
-                document.querySelector(".image2").classList.remove("hide");
-
+                document.querySelector(".layer1 h1").textContent = `TV Recommendations`;
+                //document.querySelector(".layer1").style.background = "url('./img/TV.png')";
+                document.querySelector(".layer1").style.backgroundSize = "50%";
+                document.querySelector(".layer1").style.backgroundRepeat = "no-repeat";
+                document.querySelector(".layer1").style.backgroundPosition = "center";
 
             } else {
-                document.querySelector(".image3").classList.remove("hide");
-                document.querySelector(".image2").classList.add("hide");
 
-                document.querySelector("header h1").textContent = `Movie Recommendations`;
+                //document.querySelector(".layer1").style.background = "url('./img/4.png')";
+                document.querySelector(".layer1").style.backgroundSize = "50%";
+                document.querySelector(".layer1").style.backgroundRepeat = "no-repeat";
+                document.querySelector(".layer1").style.backgroundPosition = "center";
+                document.querySelector(".layer1 h1").textContent = `Movie Recommendations`;
             }
 
             localStorage.setItem(modeKey, JSON.stringify(Type));
@@ -60,8 +66,9 @@ let myCode = (function () {
         });
 
 
-        let searchButton = document.querySelector(".searchButtonDiv");
+        let searchButton = document.querySelector("#search-button");
         searchButton.addEventListener("click", startSearch);
+
     }
 
     function showOverly(e) {
@@ -97,6 +104,7 @@ let myCode = (function () {
 
     function getDataFormLocalStorage() {
 
+
         if (localStorage.getItem(imageURLKey) && localStorage.getItem(imageSizesKey) && localStorage.getItem(timeKey)) {
 
             let savedDate = localStorage.getItem(timeKey);
@@ -105,16 +113,21 @@ let myCode = (function () {
             let seconds = calculateElapsedTime(savedDate);
 
             if (seconds > staleDataTimeOut) {
+
                 getPosterURLAndSizes();
             }
 
         } else {
+
             getPosterURLAndSizes();
+
         }
+        getPosterURLAndSizes();
     }
 
     function calculateElapsedTime(savedDate) {
         let now = new Date();
+
         let elapsedTime = now.getTime() - savedDate.getTime();
 
         let seconds = Math.ceil(elapsedTime / 1000);
@@ -155,21 +168,21 @@ let myCode = (function () {
     }
 
     function startSearch() {
-        document.querySelector(".image1").classList.add("hide");
-        document.querySelector(".image3").classList.add("hide");
+        //document.querySelector(".image1").classList.add("hide");
 
         console.log("start search");
-        searchString = document.getElementById("search-input").value;
+        searchString = document.querySelector(".search-input").value;
         if (!searchString) {
             alert("Please enter search data");
-            document.getElementById("search-input").focus();
+            document.querySelector(".search-input").focus();
             return;
         } else {
 
             let Header = document.querySelector(".firstpage");
 
-            document.querySelector("header> img").classList.add("hide");
-            
+            document.querySelector(".backButtonDiv").classList.remove("hide");
+            document.querySelector(".backButtonDiv").classList.add("show");
+
             Header.classList.remove("first");
             Header.classList.add("change");
 
@@ -181,7 +194,7 @@ let myCode = (function () {
 
     function getSearchResults() {
 
-        searchString = document.getElementById("search-input").value;
+        searchString = document.querySelector(".search-input").value;
 
         let Type = JSON.parse(localStorage.getItem(modeKey));
 
@@ -211,12 +224,12 @@ let myCode = (function () {
 
                 content.appendChild(documentFragment);
 
-
                 let cardList = document.querySelectorAll(".content>div");
 
                 cardList.forEach(function (item) {
                     item.addEventListener("click", getRecommendations);
                 });
+
 
             })
             .catch(error => console.log(error));
@@ -228,13 +241,13 @@ let myCode = (function () {
         let movieCard = document.createElement("div");
         let section = document.createElement("section");
         let image = document.createElement("img");
-        let Title = document.createElement("p1");
-        let Date = document.createElement("p2");
-        let Rating = document.createElement("p3");
-        let Overview = document.createElement("p4");
+        let Title = document.createElement("p");
+        let Date = document.createElement("p");
+        let Rating = document.createElement("p");
+        let Overview = document.createElement("p");
 
         let Type = JSON.parse(localStorage.getItem(modeKey));
-
+        console.log(movie)
         if (Type == "tv") {
             Title.textContent = movie.name;
             Date.textContent = movie.first_air_date;
@@ -252,6 +265,7 @@ let myCode = (function () {
         Rating.textContent = movie.vote_average;
         Overview.textContent = movie.overview;
         image.src = `${imageURL}${imageSizes}${movie.poster_path}`;
+        image.setAttribute("alt", "poster's not available");
 
         movieCard.setAttribute("data-title", movie.title);
         movieCard.setAttribute("data-id", movie.id);
@@ -261,6 +275,11 @@ let myCode = (function () {
         Title.className = "title";
 
         section.appendChild(image);
+        Title.className = "p1";
+        Date.className = "p2";
+        Rating.className = "p3";
+        Overview.className = "p4";
+
         movieCard.appendChild(section);
         movieCard.appendChild(Title);
         movieCard.appendChild(Date);
@@ -281,7 +300,7 @@ let myCode = (function () {
 
         let Type = JSON.parse(localStorage.getItem(modeKey));
 
-        document.getElementById("search-input").value = movieTitle;
+        document.querySelector(".search-input").value = movieTitle;
 
         let url = `https://api.themoviedb.org/3/${Type}/${movieID}/recommendations?api_key=${APIKEY}&language=en-US&page=1`
 
@@ -321,4 +340,29 @@ let myCode = (function () {
             .catch(error => console.log(error));
 
     }
+
+    function backbtn() {
+
+        if (document.querySelector("#search-results").classList[1] !== "hide") {
+            history.go();
+        } else {
+           
+
+                document.querySelector("#search-results").classList.remove("hide");
+                document.querySelector("#recommend-results").classList.add("hide");
+
+                let cardList = document.querySelectorAll(".content>div");
+
+                cardList.forEach(function (item) {
+                    item.addEventListener("click", getRecommendations);
+                    document.querySelector("#recommend-results").classList.remove("hide");
+
+                });
+
+           
+        }
+    }
+
+
+
 })();
