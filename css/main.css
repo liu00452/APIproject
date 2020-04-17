@@ -457,7 +457,7 @@ span:nth-child(4){
     grid-row-start: 3;
     grid-row-end: 4;
     font-size: 20px;
-    margin: 0;
+    margin-bottom: 0rem;
 }
 
 .p2 {
@@ -467,7 +467,7 @@ span:nth-child(4){
     grid-row-end: 3;
     color: rgba(255, 255, 255, 0.856);
     font-size: 1rem;
-    margin:0;
+    margin-bottom:1rem;
 
 }
 
@@ -479,7 +479,7 @@ span:nth-child(4){
     color: rgb(255, 255, 255);
     font-size: 20px;
     font-weight: bolder;
-  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .p4 {
@@ -497,7 +497,7 @@ span:nth-child(4){
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp:6;
+    -webkit-line-clamp:5;
  
 }
 
